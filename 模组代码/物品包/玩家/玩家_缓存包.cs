@@ -14,6 +14,7 @@ public abstract class 类型_玩家_缓存包<类型_缓存包类型> : 类型_�
     public List<类型_缓存包类型> 缓存列表_缓存包 = [];
 
     public override void UpdateEquips() {
+        if ( Player.whoAmI != Main.myPlayer ) return;
         if ( 脏标记_缓存包 ) 脏标记更新_缓存包();
     }
 
@@ -47,6 +48,8 @@ public abstract class 类型_玩家_缓存包<类型_缓存包类型> : 类型_�
     }
 
     public override void PostUpdate() {
+        if ( Player.whoAmI != Main.myPlayer ) return;
+
         bool 当前是包 = Main.mouseItem.ModItem is 类型_缓存包类型;
         bool 上次是包 = 上一个鼠标物品.ModItem is 类型_缓存包类型;
         if ( ( 当前是包 || 上次是包 ) && Main.mouseItem != 上一个鼠标物品 ) 脏标记_缓存包 = true;
