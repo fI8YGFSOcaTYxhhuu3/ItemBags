@@ -1,0 +1,134 @@
+Items: {
+	类型_物品包: {
+		DisplayName: Item Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			A basic storage container. Items inside do not provide bonuses.
+			Cannot be placed inside other item bags.
+			'''
+	}
+
+	类型_饰品包: {
+		DisplayName: Accessory Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			Accessories inside will take effect on the player.
+			'''
+	}
+
+	类型_护甲包: {
+		DisplayName: Armor Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			Armor inside will provide stat bonuses and activate set bonuses.
+			Every three slots are treated as a set (Helmet, Shirt, Pants).
+			'''
+	}
+
+	类型_嵌套包: {
+		DisplayName: Nested Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			Used to store other Item Bags.
+			Recursively calculates all bonuses provided by the bags within.
+			'''
+	}
+}
+
+Configs: {
+	类型_配置_物品包: {
+		DisplayName: Item Bag Config
+		Headers.容量设置: Basic Configuration
+
+		容量: {
+			Label: Storage Capacity
+			Tooltip:
+				'''
+				Set the total number of slots for this type of bag.
+				Note: Reducing capacity will cause items in excess slots to drop.
+				'''
+		}
+
+		列数: {
+			Label: Display Columns
+			Tooltip: Set the number of columns in the storage interface.
+		}
+
+		行数: {
+			Label: Display Rows
+			Tooltip: Set the number of rows in the storage interface.
+		}
+	}
+
+	类型_配置_嵌套包: {
+		DisplayName: Nested Bag Config
+		Headers.容量设置: Basic Configuration
+
+		容量: {
+			Label: Storage Capacity
+			Tooltip:
+				'''
+				Set the total number of slots for this type of bag.
+				Note: Reducing capacity will cause items in excess slots to drop.
+				'''
+		}
+
+		列数: {
+			Label: Display Columns
+			Tooltip: Set the number of columns in the storage interface.
+		}
+
+		行数: {
+			Label: Display Rows
+			Tooltip: Set the number of rows in the storage interface.
+		}
+	}
+
+	类型_配置_饰品包: {
+		DisplayName: Accessory Bag Config
+		Headers.功能设置: Feature Configuration
+
+		允许饰品重复: {
+			Label: Allow Duplicate Accessories
+			Tooltip: Allows multiple identical accessories to take effect simultaneously.
+		}
+
+		应用前缀效果: {
+			Label: Apply Accessory Prefixes
+			Tooltip: Whether to apply attribute bonuses from accessory prefixes (e.g., Warding, Lucky).
+		}
+
+		应用视觉效果: {
+			Label: Apply Accessory Vanity
+			Tooltip: Whether to display the visual appearance of accessories in the bag.
+		}
+	}
+
+	类型_配置_护甲包: {
+		DisplayName: Armor Bag Config
+		Headers.容量设置: Basic Configuration
+
+		容量: {
+			Label: Storage Capacity
+			Tooltip:
+				'''
+				Recommended to set as a multiple of 3 to match the Helmet/Body/Legs logic.
+				Incomplete sets at the end of the inventory will not activate.
+				'''
+		}
+
+		列数: {
+			Label: Display Columns
+			Tooltip: Set the number of columns in the storage interface.
+		}
+
+		行数: {
+			Label: Display Rows
+			Tooltip: Set the number of rows in the storage interface.
+		}
+	}
+}
