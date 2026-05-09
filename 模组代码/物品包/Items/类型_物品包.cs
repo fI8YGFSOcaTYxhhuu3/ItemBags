@@ -65,7 +65,8 @@ public class 类型_物品包 : ModItem {
 
     public override void LoadData( TagCompound 存档标签 ) {
         Item[] 存档矩阵 = 存档标签.Get<Item[]>( "物品矩阵" );
-        for ( int i = 0; i < Math.Min( 存档矩阵.Length, 物品矩阵.Length ); i++ ) 物品矩阵[ i ] = 存档矩阵[ i ];
+        Array.Resize( ref 物品矩阵, 存档矩阵.Length );
+        for ( int i = 0; i < 存档矩阵.Length; i++ ) 物品矩阵[ i ] = 存档矩阵[ i ];
     }
 
 }
