@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -69,4 +70,14 @@ public class 类型_物品包 : ModItem {
         for ( int i = 0; i < 存档矩阵.Length; i++ ) 物品矩阵[ i ] = 存档矩阵[ i ];
     }
 
+    public override void NetSend( BinaryWriter 网络流 ) {
+        网络流.Write( 物品矩阵.Length );
+        for ( int i = 0; i < 物品矩阵.Length; i++ ) ItemIO.Send( 物品矩阵[ i ], 网络流, true, true );
+    }
+
+    public override void NetReceive( BinaryReader 网络流 ) {
+        int 物品容量 = 网络流.ReadInt32();
+        if ( 物品矩阵.Length != 物品容量 ) Array.Resize( ref 物品矩阵, 物品容量 );
+        for ( int i = 0; i < 物品容量; i++ ) 物品矩阵[ i ] = ItemIO.Receive( 网络流, true, true );
+    }
 }
