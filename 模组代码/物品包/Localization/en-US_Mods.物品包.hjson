@@ -110,7 +110,11 @@ Configs: {
 
 	类型_配置_护甲包: {
 		DisplayName: Armor Bag Config
-		Headers.容量设置: Basic Configuration
+
+		Headers: {
+			容量设置: Basic Configuration
+			功能设置: Feature Configuration
+		}
 
 		容量: {
 			Label: Storage Capacity
@@ -129,6 +133,16 @@ Configs: {
 		行数: {
 			Label: Display Rows
 			Tooltip: Set the number of rows in the storage interface.
+		}
+
+		启用单件加成: {
+			Label: Enable Single Piece Bonuses
+			Tooltip: Whether to apply defense and attribute bonuses from individual armor pieces.
+		}
+
+		启用套装加成: {
+			Label: Enable Set Bonuses
+			Tooltip: Whether to apply the set bonus effects from full armor sets.
 		}
 	}
 }
