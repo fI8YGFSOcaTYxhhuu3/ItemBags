@@ -17,6 +17,7 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 3. Armor Bag
    - Used to store armor pieces and receive individual stat bonuses as well as set bonuses.
    - Every three consecutive slots are treated as one armor set.
+   - Configurable settings for On/OFF of individual stat bonuses and set bonuses.
 4. Nested Bag
    - Used to store various types of item bags.
    - Item bags that provide bonuses (like Accessory Bags and Armor Bags) will still function while stored inside.
