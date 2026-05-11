@@ -1,0 +1,50 @@
+[h3]Description[/h3]
+
+Adds several types of item bags as storage containers. You can place items, accessories, and armor into the bags, and receive stat bonuses and set effects.
+Using highly optimized algorithms pushed near their limits, this mod introduces almost no performance overhead when managing multiple bags and their internal spaces. 
+(However, if the modded items placed inside have heavy performance costs on their own, there is nothing I can do about it).
+
+[h3]Current Features[/h3]
+
+1. Item Bag
+   - A basic storage container. Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
+   - Right-click to open the storage UI.
+   - Crafted at a Work Bench using Silk and Iron Bars.
+   - Supports customizing the capacity and UI display size for all types of bags.
+2. Accessory Bag
+   - Used to store various accessories and receive their stat bonuses.
+   - Configurable settings for allowing duplicate accessories, applying prefix bonuses, and showing visual effects.
+3. Armor Bag
+   - Used to store armor pieces and receive individual stat bonuses as well as set bonuses.
+   - Every three consecutive slots are treated as one armor set.
+4. Nested Bag
+   - Used to store various types of item bags.
+   - Item bags that provide bonuses (like Accessory Bags and Armor Bags) will still function while stored inside.
+
+[h3]Planned Features[/h3]
+
+- Potion bags, Banner bags, Crafting Station bags, etc...
+- Dynamic difficulty based on number of equipped accessories and armors...
+
+[h3]Dependencies[/h3]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3721245166] Multiple Armor Sets Framework [/url]
+A framework designed to support equipping multiple armor sets simultaneously.
+
+[h3]Recommended Mods[/h3]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3631557282] AccBags [/url]
+An accessory bag mod that served as the foundation for the early versions of this mod.
+While this mod's storage UI is strictly for basic storage, AccBags provides more extensive UI functionalities.
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2854112585] Item Renaming [/url]
+This mod allows you to rename items at a Heavy Work Bench. 
+You can rename your item bags for easier sorting and management.
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3363174578] Simple NPC Customizer [/url]
+A difficulty adjustment mod that allows you to create NPC groups and tweak their stats. 
+Ideal for maintaining game balance when using multiple accessory/armor sets.
+
+[hr][/hr]
+
+[url=https://github.com/fI8YGFSOcaTYxhhuu3/ItemBags] GitHub Repository [/url]
