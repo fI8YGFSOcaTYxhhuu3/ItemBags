@@ -12,17 +12,18 @@ namespace 物品包.玩家;
 
 public class 类型_玩家_护甲包 : 类型_玩家_缓存包_额外缓存<类型_护甲包, 类型_护甲组合> {
 
+    public 类型_配置_护甲包 配置 = new();
+
     internal override void 脏标记更新_额外缓存() { base.脏标记更新_额外缓存(); 注册护甲(); }
 
-    public void 注册护甲() {
-        var 模组配置 = ModContent.GetInstance<类型_配置_护甲包>();
-        var 框架配置 = new 类型_模组配置( 模组配置.启用单件加成, 模组配置.启用套装加成 );
-        Player.GetModPlayer<护甲玩家>().护甲管理器.注册( "物品包", 缓存列表_额外缓存, 框架配置 ); 
-    }
+    public void 注册护甲() { Player.GetModPlayer<护甲玩家>().护甲管理器.注册( "物品包", 缓存列表_额外缓存, new( 配置.启用单件加成, 配置.启用套装加成 ) ); }
+
+    public override void SyncPlayer( int toWho, int fromWho, bool newPlayer ) { 网络发送( toWho, fromWho ); 配置.网络发送( toWho, fromWho ); }
 
     public override void 网络发送( int 接收玩家ID, int 发送玩家ID ) {
         ModPacket 网络数据 = Mod.GetPacket();
-        网络数据.Write( ( byte ) 类型_物品包模组.枚举_网络信息类型.护甲包同步 );
+        网络数据.Write( ( byte ) 类型_物品包模组.枚举_同步操作类型.玩家同步 );
+        网络数据.Write( ( byte ) 类型_物品包模组.枚举_同步对象类型.护甲包 );
         网络数据.Write( ( byte ) Player.whoAmI );
         网络数据.Write( 缓存列表_额外缓存.Count );
         foreach ( var 组合 in 缓存列表_额外缓存 ) {
