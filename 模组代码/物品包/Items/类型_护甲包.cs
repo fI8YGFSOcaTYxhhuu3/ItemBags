@@ -18,7 +18,7 @@ public class 类型_护甲包 : 类型_缓存包<类型_护甲组合> {
 
     public override bool 放入许可( Item 物品 ) => 物品.headSlot >= 0 || 物品.bodySlot >= 0 || 物品.legSlot >= 0;
 
-    protected override void 扫描矩阵() {
+    protected override void 建立缓存() {
         for ( int i = 0; i + 2 < 物品矩阵.Length; i += 3 ) {
             Item 头盔 = 物品矩阵[ i ]; Item 胸甲 = 物品矩阵[ i + 1 ]; Item 护腿 = 物品矩阵[ i + 2 ];
             if ( !头盔.IsAir || !胸甲.IsAir || !护腿.IsAir ) 缓存列表.Add( new 类型_护甲组合( 头盔, 胸甲, 护腿 ) );
