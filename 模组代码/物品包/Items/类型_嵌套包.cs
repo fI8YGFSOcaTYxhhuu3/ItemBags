@@ -23,7 +23,9 @@ public class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
     public override 枚举_物品包类型 类型标识 => 枚举_物品包类型.嵌套包;
     public override 类型_配置_嵌套包 配置 => ModContent.GetInstance<类型_配置_嵌套包>();
     public override 类型_包槽位_嵌套 界面槽位( int 索引 ) => new( this, 索引 );
+
     public override bool 放入许可( Item 物品 ) => 物品.ModItem is 类型_物品包 物品包 && !存在自我嵌套( 物品包 );
+    public override bool 置换许可( Item 物品 ) => 放入许可( 物品 );
     private bool 存在自我嵌套( 类型_物品包 目标包 ) {
         if ( 目标包 is not 类型_嵌套包 目标嵌套包 ) return false;
         if ( 目标嵌套包.ID == ID ) return true;

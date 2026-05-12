@@ -31,6 +31,7 @@ public class 类型_物品包 : ModItem {
     public virtual 类型_包槽位_物品 界面槽位( int 索引 ) => new( this, 索引 );
 
     public virtual bool 放入许可( Item 物品 ) => 物品.ModItem is not 类型_物品包;
+    public virtual bool 置换许可( Item 物品 ) => true;
 
     public virtual void 更新容量() {
         int 先前容量 = 物品矩阵.Length;
