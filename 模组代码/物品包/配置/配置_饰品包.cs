@@ -1,10 +1,8 @@
-using MultipleArmorSetsFramework;
 using System.ComponentModel;
 using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
-using Terraria.ModLoader.IO;
 using 物品包.玩家;
 
 namespace 物品包.配置;
