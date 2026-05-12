@@ -31,6 +31,5 @@ public abstract class 类型_缓存包<类型_缓存数据> : 类型_物品包 {
     }
 
     public override void LoadData( TagCompound 存档标签 ) { base.LoadData( 存档标签 ); 脏标记 = true; }
-
     public override void NetReceive( BinaryReader 网络流 ) { base.NetReceive( 网络流 ); 脏标记 = true; }
 }
