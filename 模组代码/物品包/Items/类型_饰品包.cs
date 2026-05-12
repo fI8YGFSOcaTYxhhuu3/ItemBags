@@ -10,6 +10,7 @@ namespace 物品包.Items;
 
 public class 类型_饰品包 : 类型_缓存包<Item> {
 
+    public override 枚举_物品包类型 类型标识 => 枚举_物品包类型.饰品包;
     public override 类型_配置_饰品包 配置 => ModContent.GetInstance<类型_配置_饰品包>();
     public override 类型_玩家_饰品包 玩家 => Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>();
     public override 类型_包槽位_饰品 界面槽位( int 索引 ) => new( this, 索引 );

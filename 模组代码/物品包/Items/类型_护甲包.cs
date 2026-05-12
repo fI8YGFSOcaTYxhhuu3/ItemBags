@@ -11,10 +11,9 @@ namespace 物品包.Items;
 
 public class 类型_护甲包 : 类型_缓存包<类型_护甲组合> {
 
+    public override 枚举_物品包类型 类型标识 => 枚举_物品包类型.护甲包;
     public override 类型_配置_护甲包 配置 => ModContent.GetInstance<类型_配置_护甲包>();
-
     public override 类型_玩家_护甲包 玩家 => Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>();
-
     public override 类型_包槽位_护甲 界面槽位( int 索引 ) => new( this, 索引 );
 
     public override bool 放入许可( Item 物品 ) => 物品.headSlot >= 0 || 物品.bodySlot >= 0 || 物品.legSlot >= 0;

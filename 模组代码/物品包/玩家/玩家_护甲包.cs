@@ -5,12 +5,15 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using 物品包.Items;
 using 物品包.配置;
+using static 物品包.Items.类型_物品包;
 
 namespace 物品包.玩家;
 
 
 
 public class 类型_玩家_护甲包 : 类型_玩家_缓存包_额外缓存<类型_护甲包, 类型_护甲组合> {
+
+    public override 枚举_物品包类型 缓存包标识 => 枚举_物品包类型.护甲包;
 
     public 类型_配置_护甲包 配置 = new();
 

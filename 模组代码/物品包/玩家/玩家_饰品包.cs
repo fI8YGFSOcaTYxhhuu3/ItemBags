@@ -5,12 +5,15 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using 物品包.Items;
 using 物品包.配置;
+using static 物品包.Items.类型_物品包;
 
 namespace 物品包.玩家;
 
 
 
 public class 类型_玩家_饰品包 : 类型_玩家_缓存包_额外缓存<类型_饰品包, Item> {
+
+    public override 枚举_物品包类型 缓存包标识 => 枚举_物品包类型.饰品包;
 
     public 类型_配置_饰品包 配置 = new();
 
