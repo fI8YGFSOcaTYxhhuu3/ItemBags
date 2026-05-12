@@ -13,14 +13,14 @@ namespace 物品包.Items;
 
 
 
-public class 类型_物品包 : ModItem {
+public enum 枚举_物品包类型 : int {
+    物品包,
+    嵌套包,
+    饰品包,
+    护甲包,
+}
 
-    public enum 枚举_物品包类型 : int {
-        物品包,
-        嵌套包,
-        饰品包,
-        护甲包,
-    }
+public class 类型_物品包 : ModItem {
 
     public Item[] 物品矩阵;
     public Guid ID = Guid.NewGuid();

@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using 物品包.Items;
 using 物品包.配置;
-using static 物品包.Items.类型_物品包;
 
 namespace 物品包.玩家;
 

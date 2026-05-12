@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using Terraria;
 using Terraria.ModLoader;
 using 物品包.Items;
-using static 物品包.Items.类型_物品包;
 
 namespace 物品包.玩家;
 
