@@ -39,6 +39,11 @@ Items: {
 	}
 }
 
+UI: {
+	缓存包启用: "[c/00FF00:Bag Bonus: Enabled]"
+	缓存包禁用: "[c/FF0000:Bag Bonus: Disabled]"
+}
+
 Configs: {
 	类型_配置_物品包: {
 		DisplayName: Item Bag Config

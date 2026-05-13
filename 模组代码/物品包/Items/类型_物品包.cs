@@ -47,9 +47,6 @@ public class 类型_物品包 : ModItem {
     }
 
     public override bool ConsumeItem( Player 玩家 ) => false;
-    public override bool CanRightClick() => true;
-    public override void RightClick( Player 玩家 ) { 类型_系统_界面管理.界面管理器.切换窗口( this ); }
-
     public override void SetDefaults() {
         Item.width = 32;
         Item.height = 32;

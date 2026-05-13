@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using 物品包.玩家;
 using 物品包.界面;
 using 物品包.配置;
 
@@ -10,6 +11,7 @@ namespace 物品包.Items;
 
 
 public class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
+
     private static Dictionary<枚举_物品包类型, List<类型_物品包>> 缓存字典初始化() {
         var 枚举数组 = Enum.GetValues<枚举_物品包类型>();
         var 返回字典 = new Dictionary<枚举_物品包类型, List<类型_物品包>>( 枚举数组.Length );
@@ -17,6 +19,12 @@ public class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
         return 返回字典;
     }
     public Dictionary<枚举_物品包类型, List<类型_物品包>> 缓存字典 = 缓存字典初始化();
+
+    public override void 切换启用状态() {
+        base.切换启用状态();
+        var 饰品玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>(); if ( 饰品玩家.缓存变更检测( this ) ) 饰品玩家.脏标记_缓存包 = true;
+        var 护甲玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>(); if ( 护甲玩家.缓存变更检测( this ) ) 护甲玩家.脏标记_缓存包 = true;
+    }
 
     public override ModItem Clone( Item 克隆目标 ) { var 克隆实例 = ( 类型_嵌套包 ) base.Clone( 克隆目标 ); 克隆实例.缓存字典 = 缓存字典初始化(); return 克隆实例; }
 

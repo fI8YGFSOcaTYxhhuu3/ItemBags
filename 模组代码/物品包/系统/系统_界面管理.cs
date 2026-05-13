@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
-using 物品包.玩家;
 using 物品包.界面;
 using 物品包.Items;
 
@@ -41,18 +40,33 @@ public class 类型_系统_界面管理 : ModSystem {
     public override void PostUpdateInput() {
         PostUpdateInput_包窗口关闭检测();
         PostUpdateInput_容器内右键检测();
+        PostUpdateInput_容器内中键检测();
     }
 
-    private void PostUpdateInput_包窗口关闭检测() { if ( !Main.playerInventory ) 界面管理器.关闭全部(); }
-
-    private void PostUpdateInput_容器内右键检测() {
+    private static void PostUpdateInput_包窗口关闭检测() { if ( !Main.playerInventory ) 界面管理器.关闭全部(); }
+    private static void PostUpdateInput_容器内右键检测() {
         if ( !Main.playerInventory ) return;
         if ( !Main.mouseRight || !Main.mouseRightRelease ) return;
-        if ( Main.HoverItem.ModItem is not 类型_物品包 点击饰品包 ) return;
+        if ( Main.HoverItem.ModItem is not 类型_物品包 点击包 ) return;
+        foreach ( var 容器 in 打开容器列表() ) foreach ( var 物品 in 容器 ) if ( 物品.ModItem is 类型_物品包 容器包 && 容器包.ID == 点击包.ID ) { 界面管理器.切换窗口( 容器包 ); return; }
+    }
+    private static void PostUpdateInput_容器内中键检测() {
+        if ( !Main.playerInventory ) return;
+        if ( !Main.mouseMiddle || !Main.mouseMiddleRelease ) return;
+        if ( Main.HoverItem.ModItem is not 类型_缓存包_非模板基类 点击包 ) return;
+        foreach ( var 容器 in 打开容器列表() ) foreach ( var 物品 in 容器 ) if ( 物品.ModItem is 类型_缓存包_非模板基类 容器包 && 容器包.ID == 点击包.ID ) { 容器包.切换启用状态(); return; }
+    }
 
-        Item[] 当前容器 = 类型_玩家_物品包.当前容器数组(); if ( 当前容器 == null ) return;
-
-        foreach ( var 物品 in 当前容器 ) if ( 物品.ModItem is 类型_物品包 容器物品包 && 容器物品包.ID == 点击饰品包.ID ) { 界面管理器.切换窗口( 容器物品包 ); return; }
+    private static IEnumerable<Item[]> 打开容器列表() {
+        var 玩家 = Main.LocalPlayer;
+        yield return 玩家.inventory;
+        switch ( 玩家.chest ) {
+            case -2: yield return 玩家.bank.item; break;
+            case -3: yield return 玩家.bank2.item; break;
+            case -4: yield return 玩家.bank3.item; break;
+            case -5: yield return 玩家.bank4.item; break;
+            case >= 0: yield return Main.chest[ 玩家.chest ].item; break;
+        }
     }
 
 }

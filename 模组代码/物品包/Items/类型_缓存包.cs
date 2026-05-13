@@ -3,20 +3,43 @@ using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using 物品包.玩家;
 
 namespace 物品包.Items;
 
 
 
-public abstract class 类型_缓存包<类型_缓存数据> : 类型_物品包 {
-    public List<类型_缓存数据> 缓存列表 = [];
+public abstract class 类型_缓存包_非模板基类 : 类型_物品包 {
     public bool 脏标记 = true;
+    public bool 启用状态 = true;
+
+    public virtual void 切换启用状态() {
+        启用状态 = !启用状态;
+        脏标记 = true;
+        if ( 玩家 is 类型_玩家_缓存包_非模板基类 缓存玩家 ) 缓存玩家.脏标记_缓存包 = true;
+        Terraria.Audio.SoundEngine.PlaySound( Terraria.ID.SoundID.MenuTick );
+    }
+    public override void ModifyTooltips( List<TooltipLine> 物品提示列表 ) {
+        base.ModifyTooltips( 物品提示列表 );
+        string 状态文本 = Terraria.Localization.Language.GetTextValue( 启用状态 ? "Mods.物品包.UI.缓存包启用" : "Mods.物品包.UI.缓存包禁用" );
+        物品提示列表.Add( new TooltipLine( Mod, "物品包启用状态", 状态文本 ) );
+    }
+
+    public override void 更新容量() { base.更新容量(); 脏标记 = true; }
+    public override void SaveData( TagCompound 存档标签 ) { base.SaveData( 存档标签 ); 存档标签[ "启用状态" ] = 启用状态; }
+    public override void LoadData( TagCompound 存档标签 ) { base.LoadData( 存档标签 ); if ( 存档标签.ContainsKey( "启用状态" ) ) 启用状态 = 存档标签.GetBool( "启用状态" ); 脏标记 = true; }
+    public override void NetSend( BinaryWriter 网络流 ) { base.NetSend( 网络流 ); 网络流.Write( 启用状态 ); }
+    public override void NetReceive( BinaryReader 网络流 ) { base.NetReceive( 网络流 ); 启用状态 = 网络流.ReadBoolean(); 脏标记 = true; }
+}
+
+public abstract class 类型_缓存包<类型_缓存数据> : 类型_缓存包_非模板基类 {
+    public List<类型_缓存数据> 缓存列表 = [];
 
     public void 更新缓存() {
         if ( !脏标记 ) return;
         脏标记 = false;
         清空缓存();
-        建立缓存();
+        if ( 启用状态 ) 建立缓存();
     }
     protected virtual void 清空缓存() { 缓存列表.Clear(); }
     protected abstract void 建立缓存();
@@ -27,8 +50,4 @@ public abstract class 类型_缓存包<类型_缓存数据> : 类型_物品包 {
         克隆实例.缓存列表 = [];
         return 克隆实例;
     }
-
-    public override void 更新容量() { base.更新容量(); 脏标记 = true; }
-    public override void LoadData( TagCompound 存档标签 ) { base.LoadData( 存档标签 ); 脏标记 = true; }
-    public override void NetReceive( BinaryReader 网络流 ) { base.NetReceive( 网络流 ); 脏标记 = true; }
 }
