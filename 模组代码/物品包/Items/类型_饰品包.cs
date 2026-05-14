@@ -14,11 +14,21 @@ public partial class 类型_饰品包 : 类型_缓存包<Item> {
     public override 类型_配置_饰品包 配置 => ModContent.GetInstance<类型_配置_饰品包>();
     public override 类型_玩家_饰品包 玩家 => Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>();
     public override 类型_包槽位_饰品 界面槽位( int 索引 ) => new( this, 索引 );
-    public override bool 放入许可( Item 物品 ) => 物品.accessory && 物品.headSlot < 0 && 物品.bodySlot < 0 && 物品.legSlot < 0 && ( 配置.允许饰品重复 || !玩家.存在重复( 物品 ) );
+    public override bool 放入许可( Item 物品 ) => 物品.accessory && 物品.headSlot < 0 && 物品.bodySlot < 0 && 物品.legSlot < 0 && ( 配置.允许饰品重复 || !存在重复饰品( 物品 ) );
 
 }
 
 // 特征重写函数
 public partial class 类型_饰品包 : 类型_缓存包<Item> {
     protected override void 建立缓存() { foreach ( var 物品 in 物品矩阵 ) if ( !物品.IsAir ) 缓存列表.Add( 物品 ); }
+}
+
+// 辅助函数
+public partial class 类型_饰品包 : 类型_缓存包<Item> {
+    private bool 存在重复饰品( Item 查询饰品 ) {
+        var 玩家 = this.玩家;
+        for ( int i = 3; i < 10; i++ ) if ( 玩家.Player.armor[ i ].type == 查询饰品.type ) return true;
+        玩家.脏标记更新(); foreach( var 物品 in 玩家.缓存列表_额外缓存 ) if ( 物品.type == 查询饰品.type ) return true;
+        return false;
+    }
 }
