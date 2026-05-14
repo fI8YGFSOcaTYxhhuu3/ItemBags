@@ -14,6 +14,7 @@ Items: {
 		Tooltip:
 			'''
 			<right> to open storage interface.
+			Middle click to toggle bag bonuses.
 			Accessories inside will take effect on the player.
 			'''
 	}
@@ -23,6 +24,7 @@ Items: {
 		Tooltip:
 			'''
 			<right> to open storage interface.
+			Middle click to toggle bag bonuses.
 			Armor inside will provide stat bonuses and activate set bonuses.
 			Every three slots are treated as a set (Helmet, Shirt, Pants).
 			'''
@@ -33,6 +35,7 @@ Items: {
 		Tooltip:
 			'''
 			<right> to open storage interface.
+			Middle click to toggle bag bonuses.
 			Used to store other Item Bags.
 			Recursively calculates all bonuses provided by the bags within.
 			'''
