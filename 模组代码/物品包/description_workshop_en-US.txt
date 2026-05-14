@@ -6,11 +6,14 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 
 [h3]Current Features[/h3]
 
-1. Item Bag
-   - A basic storage container. Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
-   - Right-click to open the storage UI.
+0. General Notes
+   - Right-click to open the storage interface.
+   - Middle-click to toggle the bag's attribute bonuses on/off.
    - Crafted at a Work Bench using Silk and Iron Bars.
-   - Supports customizing the capacity and UI display size for all types of bags.
+   - Supports customizing capacity and UI display size for all bag types.
+1. Item Bag
+   - A basic storage container.
+   - Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
 2. Accessory Bag
    - Used to store various accessories and receive their stat bonuses.
    - Configurable settings for allowing duplicate accessories, applying prefix bonuses, and showing visual effects.
