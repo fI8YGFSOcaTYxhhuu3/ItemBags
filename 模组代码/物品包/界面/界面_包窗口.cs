@@ -22,7 +22,7 @@ public class 类型_包窗口 : UIPanel {
     private readonly UIGrid 物品网格 = [];
     private readonly UIScrollbar 滚动条 = new();
 
-    private Vector2 位置 = new( Main.screenWidth / 3, Main.screenHeight / 3 );
+    private Vector2? 位置;
     private Vector2? 拖拽偏移;
 
     public bool 待更新布局属性 = true;
@@ -78,8 +78,9 @@ public class 类型_包窗口 : UIPanel {
         float 网格宽度 = 槽位大小 * 配置.列数 + 槽位间距 * ( 配置.列数 - 1 );
         float 窗口宽度 = 边缘间距 + 网格宽度 + 槽位间距 + 滚动条宽度 + 边缘间距;
         float 窗口高度 = 边缘间距 * 2 + 槽位大小 * 配置.行数 + 槽位间距 * ( 配置.行数 - 1 );
+        位置 ??= new Vector2( ( Main.screenWidth - 窗口宽度 ) / 2f, ( Main.screenHeight - 窗口高度 ) / 2f );
 
-        Left.Set( 位置.X, 0f ); Top.Set( 位置.Y, 0f ); Width.Set( 窗口宽度, 0f ); Height.Set( 窗口高度, 0f );
+        Left.Set( 位置.Value.X, 0f ); Top.Set( 位置.Value.Y, 0f ); Width.Set( 窗口宽度, 0f ); Height.Set( 窗口高度, 0f );
         物品网格.Width.Set( 网格宽度, 0f ); 物品网格.Height.Set( 窗口高度 - 边缘间距 * 2, 0f );
 
         Recalculate();
