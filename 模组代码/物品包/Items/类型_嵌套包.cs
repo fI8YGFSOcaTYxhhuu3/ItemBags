@@ -27,9 +27,9 @@ public partial class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
 // 特征重写函数
 public partial class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
     public override void 切换启用状态() {
+        if ( 启用状态 ) 玩家缓存标记();
         base.切换启用状态();
-        var 饰品玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>(); if ( 饰品玩家.缓存变更检测( this ) ) 饰品玩家.脏标记_缓存包 = true;
-        var 护甲玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>(); if ( 护甲玩家.缓存变更检测( this ) ) 护甲玩家.脏标记_缓存包 = true;
+        if ( 启用状态 ) 玩家缓存标记();
     }
     public override ModItem Clone( Item 克隆目标 ) { var 克隆实例 = ( 类型_嵌套包 ) base.Clone( 克隆目标 ); 克隆实例.缓存字典 = 缓存字典初始化(); return 克隆实例; }
     protected override void 清空缓存() { base.清空缓存(); foreach ( var 列表 in 缓存字典.Values ) 列表.Clear(); }
@@ -49,5 +49,9 @@ public partial class 类型_嵌套包 : 类型_缓存包<类型_物品包> {
         if ( 目标嵌套包.ID == ID ) return true;
         目标嵌套包.更新缓存(); foreach ( var 子嵌套包 in 目标嵌套包.缓存字典[ 枚举_物品包类型.嵌套包 ] ) if ( 存在自我嵌套( 子嵌套包 ) ) return true;
         return false;
+    }
+    private void 玩家缓存标记() {
+        var 饰品玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>(); if ( 饰品玩家.缓存变更检测( this ) ) 饰品玩家.脏标记_缓存包 = true;
+        var 护甲玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>(); if ( 护甲玩家.缓存变更检测( this ) ) 护甲玩家.脏标记_缓存包 = true;
     }
 }
