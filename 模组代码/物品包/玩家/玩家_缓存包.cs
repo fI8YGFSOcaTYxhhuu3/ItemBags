@@ -46,8 +46,8 @@ public abstract partial class 类型_玩家_缓存包<类型_缓存包类型> : 
         if ( 物品 is 类型_缓存包类型 ) return true;
         if ( 物品 is 类型_嵌套包 嵌套包 ) {
             嵌套包.更新缓存();
-            if ( 嵌套包.缓存字典[ 缓存包标识 ].Count > 0 ) return true;
-            foreach ( var 子嵌套包 in 嵌套包.缓存字典[ 枚举_物品包类型.嵌套包 ] ) if ( 缓存变更检测( 子嵌套包 ) ) return true;
+            if ( 嵌套包.缓存数据[ ( byte ) 缓存包标识 ].Count > 0 ) return true;
+            foreach ( var 子嵌套包 in 嵌套包.缓存数据[ ( byte ) 枚举_物品包类型.嵌套包 ] ) if ( 缓存变更检测( 子嵌套包 ) ) return true;
         }
         return false;
     }
@@ -69,7 +69,7 @@ public abstract partial class 类型_玩家_缓存包<类型_缓存包类型> : 
     }
     private void 扫描嵌套包( 类型_嵌套包 嵌套包 ) {
         嵌套包.更新缓存();
-        foreach ( var 子嵌套包 in 嵌套包.缓存字典[ 枚举_物品包类型.嵌套包 ] ) 扫描嵌套包( ( 类型_嵌套包 ) 子嵌套包 );
-        foreach ( var 目标包 in 嵌套包.缓存字典[ 缓存包标识 ] ) 缓存列表_缓存包.Add( ( 类型_缓存包类型 ) 目标包 );
+        foreach ( var 子嵌套包 in 嵌套包.缓存数据[ ( byte ) 枚举_物品包类型.嵌套包 ] ) 扫描嵌套包( ( 类型_嵌套包 ) 子嵌套包 );
+        foreach ( var 目标包 in 嵌套包.缓存数据[ ( byte ) 缓存包标识 ] ) 缓存列表_缓存包.Add( ( 类型_缓存包类型 ) 目标包 );
     }
 }

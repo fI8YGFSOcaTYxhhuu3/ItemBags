@@ -9,7 +9,7 @@ namespace 物品包.Items;
 
 
 // 简单重写成员
-public partial class 类型_饰品包 : 类型_缓存包<Item> {
+public partial class 类型_饰品包 : 类型_缓存包_列表<Item> {
     public override 枚举_物品包类型 类型标识 => 枚举_物品包类型.饰品包;
     public override 类型_配置_饰品包 配置 => ModContent.GetInstance<类型_配置_饰品包>();
     public override 类型_玩家_饰品包 玩家 => Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>();
@@ -19,12 +19,12 @@ public partial class 类型_饰品包 : 类型_缓存包<Item> {
 }
 
 // 特征重写函数
-public partial class 类型_饰品包 : 类型_缓存包<Item> {
-    protected override void 建立缓存() { foreach ( var 物品 in 物品矩阵 ) if ( !物品.IsAir ) 缓存列表.Add( 物品 ); }
+public partial class 类型_饰品包 : 类型_缓存包_列表<Item> {
+    public override void 建立缓存() { foreach ( var 物品 in 物品矩阵 ) if ( !物品.IsAir ) 缓存数据.Add( 物品 ); }
 }
 
 // 辅助函数
-public partial class 类型_饰品包 : 类型_缓存包<Item> {
+public partial class 类型_饰品包 : 类型_缓存包_列表<Item> {
     private bool 存在重复饰品( Item 查询饰品 ) {
         var 玩家 = this.玩家;
         for ( int i = 3; i < 10; i++ ) if ( 玩家.Player.armor[ i ].type == 查询饰品.type ) return true;
