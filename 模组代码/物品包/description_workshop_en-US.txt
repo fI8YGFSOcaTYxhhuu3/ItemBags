@@ -7,23 +7,24 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 [h3]Current Features[/h3]
 
 0. General Notes
-   - Right-click to open the storage interface.
-   - Middle-click to toggle the bag's attribute bonuses on/off.
-   - Crafted at a Work Bench using Silk and Iron Bars.
-   - Supports customizing capacity and UI display size for all bag types.
+	- Right-click to open the storage interface.
+	- Middle-click to toggle the bag's attribute bonuses on/off.
+	- Crafted at a Work Bench using Silk and Iron Bars.
+	- Supports customizing capacity and UI display size for all bag types.
 1. Item Bag
-   - A basic storage container.
-   - Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
+	- A basic storage container.
+	- Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
 2. Accessory Bag
-   - Used to store various accessories and receive their stat bonuses.
-   - Configurable settings for allowing duplicate accessories, applying prefix bonuses, and showing visual effects.
+	- Used to store various accessories and receive their stat bonuses.
+	- Configurable settings for allowing duplicate accessories, applying prefix bonuses, and showing visual effects.
 3. Armor Bag
-   - Used to store armor pieces and receive individual stat bonuses as well as set bonuses.
-   - Every three consecutive slots are treated as one armor set.
-   - Configurable settings for On/OFF of individual stat bonuses and set bonuses.
+	- Used to store armor pieces and receive individual stat bonuses as well as set bonuses.
+	- Every three consecutive slots are treated as one armor set.
+	- Configurable settings for mode of individual stat bonuses and set bonuses.
+		- Include Disable, Enable, and Unique modes.
 4. Nested Bag
-   - Used to store various types of item bags.
-   - Item bags that provide bonuses (like Accessory Bags and Armor Bags) will still function while stored inside.
+	- Used to store various types of item bags.
+	- Item bags that provide bonuses (like Accessory Bags and Armor Bags) will still function while stored inside.
 
 [h3]Planned Features[/h3]
 
