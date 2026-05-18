@@ -14,7 +14,7 @@ namespace 物品包.玩家;
 public partial class 类型_玩家_护甲包 : 类型_玩家_缓存包_额外缓存<类型_护甲包, 类型_护甲组合> {
     public 类型_配置_护甲包 配置 = new();
 
-    public void 注册护甲() { Player.GetModPlayer<护甲玩家>().护甲管理器.注册( "物品包", 缓存列表_额外缓存, new( 配置.启用单件加成, 配置.启用套装加成 ) ); }
+    public void 注册护甲() { Player.GetModPlayer<护甲玩家>().护甲管理器.注册( "物品包", 缓存列表_额外缓存, new( 配置.单件加成模式, 配置.套装加成模式 ) ); }
 }
 
 // 简单重写成员

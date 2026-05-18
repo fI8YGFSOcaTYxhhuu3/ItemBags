@@ -143,14 +143,34 @@ Configs: {
 			Tooltip: Set the number of rows in the storage interface.
 		}
 
-		启用单件加成: {
-			Label: Enable Single Piece Bonuses
-			Tooltip: Whether to apply defense and attribute bonuses from individual armor pieces.
-		}
+		单件加成模式: {
+            Label: Single Piece Bonus Mode
+            Tooltip: 
+				'''
+				Sets the bonus mode for individual armor pieces in the bag.
+				Disabled: No bonuses are applied.
+				Enabled: Bonuses are applied and can stack repeatedly.
+				Unique: The same type of armor piece only applies its bonus once.
+				'''
+        }
 
-		启用套装加成: {
-			Label: Enable Set Bonuses
-			Tooltip: Whether to apply the set bonus effects from full armor sets.
-		}
+        套装加成模式: {
+            Label: Set Bonus Mode
+            Tooltip: 
+				'''
+				Sets the bonus mode for completed armor sets in the bag.
+				Disabled: No bonuses are applied.
+				Enabled: Bonuses are applied and can stack repeatedly.
+				Unique: The same armor set only applies its bonus once.
+				'''
+        }
 	}
+}
+
+Enums: {
+    枚举_加成模式: {
+        禁用: Disabled
+        启用: Enabled
+        唯一: Unique
+    }
 }
