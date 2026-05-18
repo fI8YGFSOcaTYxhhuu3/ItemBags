@@ -57,6 +57,7 @@ public partial class 类型_包槽位_物品 : UIElement {
 
         if ( 所属物品.IsAir ) return;
 
+        Main.instance.LoadItem( 所属物品.type );
         Texture2D itemTexture = TextureAssets.Item[ 所属物品.type ].Value;
 
         Rectangle sourceRect = Main.itemAnimations[ 所属物品.type ]?.GetFrame( itemTexture ) ?? itemTexture.Frame();
