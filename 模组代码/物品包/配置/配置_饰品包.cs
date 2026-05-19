@@ -5,7 +5,12 @@ namespace 物品包.配置;
 
 
 
-public class 类型_配置_饰品包 : 类型_配置_物品包 {
+public record struct 结构_功能配置_饰品包 {
+    public bool 应用前缀效果;
+    public bool 应用视觉效果;
+}
+
+public class 类型_配置_饰品包 : 类型_配置_物品包, 接口_配置_功能包<结构_功能配置_饰品包> {
 
     [Header( "功能设置" )]
 
@@ -18,4 +23,5 @@ public class 类型_配置_饰品包 : 类型_配置_物品包 {
     [DefaultValue( true )]
     public bool 应用视觉效果 { get; set; } = true;
 
+    public 结构_功能配置_饰品包 功能配置 => new() { 应用前缀效果 = 应用前缀效果, 应用视觉效果 = 应用视觉效果 };
 }

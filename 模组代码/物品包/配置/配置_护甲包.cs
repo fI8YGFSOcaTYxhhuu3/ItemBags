@@ -6,7 +6,12 @@ namespace 物品包.配置;
 
 
 
-public class 类型_配置_护甲包 : 类型_配置_物品包 {
+public record struct 结构_功能配置_护甲包 {
+    public 枚举_加成模式 单件加成模式;
+    public 枚举_加成模式 套装加成模式;
+}
+
+public class 类型_配置_护甲包 : 类型_配置_物品包, 接口_配置_功能包<结构_功能配置_护甲包> {
 
     [DefaultValue( 150 )]
     public override int 容量 { get; set; }
@@ -25,4 +30,5 @@ public class 类型_配置_护甲包 : 类型_配置_物品包 {
     [DefaultValue( 枚举_加成模式.唯一 )]
     public 枚举_加成模式 套装加成模式 { get; set; }
 
+    public 结构_功能配置_护甲包 功能配置 => new() { 单件加成模式 = 单件加成模式, 套装加成模式 = 套装加成模式 };
 }
