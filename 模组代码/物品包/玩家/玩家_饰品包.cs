@@ -29,10 +29,8 @@ public partial class 类型_玩家_饰品包 : 类型_玩家_缓存包_额外缓
 
 // 网络同步
 public partial class 类型_玩家_饰品包 : 类型_玩家_缓存包_额外缓存<类型_饰品包, Item> {
-    public override void SyncPlayer( int toWho, int fromWho, bool newPlayer ) { 网络发送( toWho, fromWho ); 配置.网络发送( toWho, fromWho ); }
     public override void 网络发送( int 接收玩家ID, int 发送玩家ID ) {
         ModPacket 网络数据 = Mod.GetPacket();
-        网络数据.Write( ( byte ) 类型_物品包模组.枚举_同步操作类型.玩家同步 );
         网络数据.Write( ( byte ) 类型_物品包模组.枚举_同步对象类型.饰品包 );
         网络数据.Write( ( byte ) Player.whoAmI );
         网络数据.Write( 缓存列表_额外缓存.Count );
