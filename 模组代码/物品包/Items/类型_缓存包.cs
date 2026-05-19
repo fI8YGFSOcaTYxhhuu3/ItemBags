@@ -68,6 +68,3 @@ public abstract partial class 类型_缓存包_列表<类型_缓存数据> : 类
     public override void 清空缓存() { 缓存数据.Clear(); }
     protected override List<类型_缓存数据> 初始缓存数据() { return []; }
 }
-
-// 特征重写函数
-public abstract partial class 类型_缓存包_数组<类型_缓存数据> : 类型_缓存包<类型_缓存数据[]> { }
