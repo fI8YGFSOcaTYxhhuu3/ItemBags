@@ -1,11 +1,14 @@
 using System.ComponentModel;
+using System.IO;
 using Terraria.ModLoader.Config;
+using Terraria.ModLoader.IO;
 
 namespace 物品包.配置; 
 
 
 
-public class 类型_配置_物品包 : ModConfig {
+// 配置字段
+public partial class 类型_配置_物品包 : ModConfig {
 
     public override ConfigScope Mode => ConfigScope.ClientSide;
 
@@ -23,4 +26,16 @@ public class 类型_配置_物品包 : ModConfig {
     [DefaultValue( 10 )]
     public virtual int 行数 { get; set; }
 
+}
+
+// IO 函数
+public partial class 类型_配置_物品包 {
+    public virtual TagCompound 存档写入() => new() { [ "容量" ] = 容量, [ "列数" ] = 列数, [ "行数" ] = 行数 };
+    public virtual void 存档读取( TagCompound 存档标签 ) {
+        if ( 存档标签.TryGet<int>( "容量", out var 容量 ) ) this.容量 = 容量;
+        if ( 存档标签.TryGet<int>( "列数", out var 列数 ) ) this.列数 = 列数;
+        if ( 存档标签.TryGet<int>( "行数", out var 行数 ) ) this.行数 = 行数;
+    }
+    public virtual void 网络发送( BinaryWriter 网络流 ) { 网络流.Write( 容量 ); 网络流.Write( 列数 ); 网络流.Write( 行数 ); }
+    public virtual void 网络接收( BinaryReader 网络流 ) { 容量 = 网络流.ReadInt32(); 列数 = 网络流.ReadInt32(); 行数 = 网络流.ReadInt32(); }
 }
