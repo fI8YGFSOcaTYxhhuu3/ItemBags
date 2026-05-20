@@ -2,7 +2,6 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using 物品包.Items;
-using 物品包.系统;
 
 namespace 物品包.界面;
 
@@ -48,7 +47,7 @@ public partial class 类型_窗口_物品包 {
     private void 配置按钮_初始化() {
         配置按钮.VAlign = 0.5f;
         配置按钮.Width.Set( 60f, 0f ); 配置按钮.Height.Set( 28f, 0f );
-        配置按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面管理.界面管理器.切换配置窗口( 包 );
+        配置按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面交互.界面管理器.切换配置窗口( 包 );
         工具栏.Append( 配置按钮 );
     }
     private void 工具栏_初始化() {

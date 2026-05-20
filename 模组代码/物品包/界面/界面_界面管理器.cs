@@ -8,7 +8,7 @@ namespace 物品包.界面;
 
 
 // 通用
-public partial class 类型_包界面管理器 : UIState {
+public partial class 类型_界面管理器 : UIState {
     public void 关闭全部() {
         foreach ( var 窗口 in 窗口映射.Values ) 窗口.Remove();
         窗口映射.Clear();
@@ -17,7 +17,7 @@ public partial class 类型_包界面管理器 : UIState {
 }
 
 // 物品包窗口
-public partial class 类型_包界面管理器 : UIState {
+public partial class 类型_界面管理器 {
     private readonly Dictionary<Guid, 类型_窗口_物品包> 窗口映射 = [];
 
     public void 切换窗口( 接口_物品包 包 ) {
@@ -32,7 +32,7 @@ public partial class 类型_包界面管理器 : UIState {
 }
 
 // 配置窗口
-public partial class 类型_包界面管理器 : UIState {
+public partial class 类型_界面管理器 {
     public 类型_窗口_物品包配置 配置窗口;
 
     public void 切换配置窗口( 接口_物品包 包 ) {

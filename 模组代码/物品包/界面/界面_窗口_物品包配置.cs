@@ -1,7 +1,6 @@
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using 物品包.Items;
-using 物品包.系统;
 
 namespace 物品包.界面;
 
@@ -27,7 +26,7 @@ public class 类型_窗口_物品包配置 : 类型_窗口_通用 {
         UITextPanel<string> 关闭按钮 = new( "关闭" ) { HAlign = 0.5f };
         关闭按钮.Width.Set( 80f, 0f ); 关闭按钮.Height.Set( 30f, 0f );
         关闭按钮.Top.Set( -40f, 1f );
-        关闭按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面管理.界面管理器.关闭配置窗口();
+        关闭按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面交互.界面管理器.关闭配置窗口();
         Append( 关闭按钮 );
     }
 }
