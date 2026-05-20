@@ -17,6 +17,8 @@ namespace 物品包.Items;
 public partial interface 接口_物品包 {
     Guid ID { get; set; }
     Item[] 物品矩阵 { get; set; }
+
+    void 更新容量();
 }
 
 // 简单虚成员
