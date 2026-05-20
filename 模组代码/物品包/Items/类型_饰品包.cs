@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Terraria;
+using Terraria.ModLoader;
 using 物品包.玩家;
 using 物品包.界面;
 using 物品包.配置;
@@ -17,11 +18,15 @@ public struct 结构_同步数据_饰品包 {
 }
 
 // 简单重写成员
-public partial interface 接口_饰品包 : 接口_物品包<类型_配置_饰品包, 类型_玩家_饰品包, 类型_包槽位_饰品>, 接口_缓存包_列表<Item>, 接口_缓存包_可切换<类型_缓存_饰品包, 类型_配置_饰品包, 类型_玩家_饰品包, 类型_包槽位_饰品>, 接口_网络同步包<结构_同步数据_饰品包> {
+public partial interface 接口_饰品包 : 接口_缓存包_列表<Item>, 接口_缓存包_可切换<类型_缓存_饰品包>, 接口_网络同步包<结构_同步数据_饰品包> {
     枚举_物品包类型 接口_物品包.类型标识 => 枚举_物品包类型.饰品包;
-    bool 接口_物品包.放入许可( Item 物品 ) => 物品.accessory && 物品.headSlot < 0 && 物品.bodySlot < 0 && 物品.legSlot < 0 && ( 配置.允许饰品重复 || !存在重复饰品( 物品 ) );
-    类型_包槽位_饰品 接口_物品包<类型_配置_饰品包, 类型_玩家_饰品包, 类型_包槽位_饰品>.界面槽位( int 索引 ) => new( this, 索引 );
-    结构_同步数据_饰品包 接口_网络同步包<结构_同步数据_饰品包>.同步数据 => new() { 功能配置 = 配置.功能配置, 数据列表 = 缓存数据 };
+    类型_配置_物品包 接口_物品包.默认配置 => ModContent.GetInstance<类型_配置_饰品包>();
+    类型_配置_饰品包 类型配置 => 配置 as 类型_配置_饰品包;
+    类型_玩家_物品包 接口_物品包.玩家 => Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>();
+    类型_玩家_饰品包 类型玩家 => 玩家 as 类型_玩家_饰品包;
+    类型_包槽位_物品 接口_物品包.界面槽位( int 索引 ) => new 类型_包槽位_饰品( this, 索引 );
+    bool 接口_物品包.放入许可( Item 物品 ) => 物品.accessory && 物品.headSlot < 0 && 物品.bodySlot < 0 && 物品.legSlot < 0 && ( 类型配置.允许饰品重复 || !存在重复饰品( 物品 ) );
+    结构_同步数据_饰品包 接口_网络同步包<结构_同步数据_饰品包>.同步数据 => new() { 功能配置 = 类型配置.功能配置, 数据列表 = 缓存数据 };
 }
 
 // 特征重写函数
@@ -32,11 +37,11 @@ public partial interface 接口_饰品包 {
 // 辅助函数
 public partial interface 接口_饰品包 {
     private bool 存在重复饰品( Item 查询饰品 ) {
-        var 玩家 = this.玩家;
+        var 玩家 = 类型玩家;
         for ( int i = 3; i < 10; i++ ) if ( 玩家.Player.armor[ i ].type == 查询饰品.type ) return true;
         玩家.脏标记更新(); foreach( var 数据 in CollectionsMarshal.AsSpan( 玩家.缓存列表_同步缓存 ) ) foreach ( var 饰品 in CollectionsMarshal.AsSpan( 数据.数据列表 ) ) if ( 饰品.type == 查询饰品.type ) return true;
         return false;
     }
 }
 
-public class 类型_饰品包 : 类型_缓存包<类型_缓存_饰品包, 类型_配置_饰品包, 类型_玩家_饰品包, 类型_包槽位_饰品>, 接口_饰品包;
+public class 类型_饰品包 : 类型_缓存包<类型_缓存_饰品包>, 接口_饰品包;
