@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Terraria;
 using 物品包.玩家;
 using 物品包.界面;
@@ -34,7 +34,7 @@ public partial interface 接口_饰品包 {
     private bool 存在重复饰品( Item 查询饰品 ) {
         var 玩家 = this.玩家;
         for ( int i = 3; i < 10; i++ ) if ( 玩家.Player.armor[ i ].type == 查询饰品.type ) return true;
-        玩家.脏标记更新(); foreach( var 物品 in 玩家.缓存列表_额外缓存 ) if ( 物品.type == 查询饰品.type ) return true;
+        玩家.脏标记更新(); foreach( var 数据 in CollectionsMarshal.AsSpan( 玩家.缓存列表_同步缓存 ) ) foreach ( var 饰品 in CollectionsMarshal.AsSpan( 数据.数据列表 ) ) if ( 饰品.type == 查询饰品.type ) return true;
         return false;
     }
 }
