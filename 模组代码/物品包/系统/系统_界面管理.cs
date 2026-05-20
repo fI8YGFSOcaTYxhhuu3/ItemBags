@@ -53,8 +53,8 @@ public class 类型_系统_界面管理 : ModSystem {
     private static void PostUpdateInput_容器内中键检测() {
         if ( !Main.playerInventory ) return;
         if ( !Main.mouseMiddle || !Main.mouseMiddleRelease ) return;
-        if ( Main.HoverItem.ModItem is not 接口_缓存包_可切换 点击包 ) return;
-        foreach ( var 容器 in 打开容器列表() ) foreach ( var 物品 in 容器 ) if ( 物品.ModItem is 接口_缓存包_可切换 容器包 && 容器包.ID == 点击包.ID ) { 容器包.切换启用状态(); return; }
+        if ( Main.HoverItem.ModItem is not 接口_缓存包 点击包 ) return;
+        foreach ( var 容器 in 打开容器列表() ) foreach ( var 物品 in 容器 ) if ( 物品.ModItem is 接口_缓存包 容器包 && 容器包.ID == 点击包.ID ) { 容器包.切换启用状态(); return; }
     }
 
     private static IEnumerable<Item[]> 打开容器列表() {

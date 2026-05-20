@@ -42,7 +42,6 @@ public partial interface 接口_物品包 {
 
 // TML 虚成员
 public partial interface 接口_物品包 {
-    接口_物品包 Clone( 接口_物品包 初始副本 ) => Clone_物品包( 初始副本 );
     protected 接口_物品包 Clone_物品包( 接口_物品包 副本 ) {
         副本.物品矩阵 = Array.ConvertAll( 物品矩阵, 物品 => 物品.Clone() );
         if ( 独立配置 != null ) 副本.独立配置 = 独立配置.Clone() as 类型_配置_物品包;
@@ -81,6 +80,16 @@ public partial class 类型_物品包 : ModItem, 接口_物品包 {
     public 类型_配置_物品包 独立配置 { get; set; }
 }
 
+// TML 重写成员
+public partial class 类型_物品包 {
+    public override ModItem Clone( Item 初始副本 ) {
+        var 副本 = base.Clone( 初始副本 ) as 类型_物品包;
+        副本.物品矩阵 = new Item[ 物品矩阵.Length ]; for ( int i = 0; i < 物品矩阵.Length; i++ ) 副本.物品矩阵[ i ] = 物品矩阵[ i ].Clone();
+        if ( 独立配置 != null ) 副本.独立配置 = 独立配置.Clone() as 类型_配置_物品包;
+        return 副本;
+    }
+}
+
 // TML 成员
 public partial class 类型_物品包 {
     public override bool ConsumeItem( Player 玩家 ) => false;
@@ -92,7 +101,6 @@ public partial class 类型_物品包 {
         Item.noGrabDelay = 100;
         物品矩阵 = new Item[ 接口.配置.容量 ]; for ( int i = 0; i < 物品矩阵.Length; i++ ) 物品矩阵[ i ] = new();
     }
-    public override ModItem Clone( Item 初始副本 ) => ( ModItem ) 接口.Clone( base.Clone( 初始副本 ) as 接口_物品包 ) ;
     public override void SaveData( TagCompound 存档标签 ) => 接口.SaveData( 存档标签 );
     public override void LoadData( TagCompound 存档标签 ) => 接口.LoadData( 存档标签 );
     public override void NetSend( BinaryWriter 网络流 ) => 接口.NetSend( 网络流 );
