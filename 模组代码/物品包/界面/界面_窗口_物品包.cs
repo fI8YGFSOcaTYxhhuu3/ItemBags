@@ -2,13 +2,17 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using 物品包.Items;
+using 物品包.玩家;
 using 物品包.系统;
+using 物品包.配置;
 
 namespace 物品包.界面;
 
 
 
-public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
+public partial class 类型_窗口_物品包<泛型_配置, 泛型_玩家, 泛型_包槽位> : 类型_窗口_通用 where 泛型_配置 : 类型_配置_物品包 where 泛型_玩家 : 类型_玩家_物品包 where 泛型_包槽位 : 类型_包槽位_物品 {
+    public 接口_物品包<泛型_配置, 泛型_玩家, 泛型_包槽位> 包 { get; set; }
+
     private const float 槽位大小 = 38f;
     private const float 槽位间距 = 4f;
     private const float 边缘间距 = 10f; 
@@ -25,9 +29,8 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
     private readonly UIGrid 物品网格 = [];
     private readonly UIScrollbar 滚动条 = new();
 
-    public 类型_物品包 包;
 
-    public 类型_窗口_物品包( 类型_物品包 包 ) {
+    public 类型_窗口_物品包( 接口_物品包<泛型_配置, 泛型_玩家, 泛型_包槽位> 包 ) {
         包.更新容量(); this.包 = 包;
         SetPadding( 0f );
         初始化();
@@ -44,7 +47,7 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
 }
 
 // 子部件
-public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
+public partial class 类型_窗口_物品包<泛型_配置, 泛型_玩家, 泛型_包槽位> {
     private void 配置按钮_初始化() {
         配置按钮.VAlign = 0.5f;
         配置按钮.Width.Set( 60f, 0f ); 配置按钮.Height.Set( 28f, 0f );

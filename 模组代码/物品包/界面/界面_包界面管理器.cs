@@ -20,7 +20,7 @@ public partial class 类型_包界面管理器 : UIState {
 public partial class 类型_包界面管理器 : UIState {
     private readonly Dictionary<Guid, 类型_窗口_物品包> 窗口映射 = [];
 
-    public void 切换窗口( 类型_物品包 包 ) {
+    public void 切换窗口( 接口_物品包 包 ) {
         if ( 窗口映射.ContainsKey( 包.ID ) ) 关闭窗口( 包.ID );
         else {
             var 窗口 = new 类型_窗口_物品包( 包 );
@@ -35,11 +35,11 @@ public partial class 类型_包界面管理器 : UIState {
 public partial class 类型_包界面管理器 : UIState {
     public 类型_窗口_物品包配置 配置窗口;
 
-    public void 切换配置窗口( 类型_物品包 包 ) {
+    public void 切换配置窗口( 接口_物品包 包 ) {
         if ( 配置窗口 == null ) { 创建配置窗口( 包 ); return; }
         if ( 配置窗口.包.ID == 包.ID ) { 关闭配置窗口(); return; }
         关闭配置窗口(); 创建配置窗口( 包 );
     }
-    public void 创建配置窗口( 类型_物品包 包 ) { 配置窗口 = new( 包 ); Append( 配置窗口 ); }
+    public void 创建配置窗口( 接口_物品包 包 ) { 配置窗口 = new( 包 ); Append( 配置窗口 ); }
     public void 关闭配置窗口() { 配置窗口?.Remove(); 配置窗口 = null; }
 }

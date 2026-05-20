@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ModLoader;
 using 物品包.玩家;
 using 物品包.界面;
 using 物品包.配置;
@@ -40,8 +41,8 @@ public partial interface 接口_嵌套包 {
         return false;
     }
     private void 玩家缓存标记() {
-        var 饰品玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>(); if ( 饰品玩家.缓存变更检测( this ) ) 饰品玩家.脏标记_缓存包 = true;
-        var 护甲玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>(); if ( 护甲玩家.缓存变更检测( this ) ) 护甲玩家.脏标记_缓存包 = true;
+        var 饰品玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_饰品包>(); if ( 饰品玩家.缓存变更检测( this as ModItem ) ) 饰品玩家.脏标记_缓存包 = true;
+        var 护甲玩家 = Main.LocalPlayer.GetModPlayer<类型_玩家_护甲包>(); if ( 护甲玩家.缓存变更检测( this as ModItem ) ) 护甲玩家.脏标记_缓存包 = true;
     }
 }
 

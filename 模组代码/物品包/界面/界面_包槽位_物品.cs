@@ -15,10 +15,9 @@ namespace 物品包.界面;
 
 
 // 特征成员
-public partial class 类型_包槽位_物品( 类型_物品包 所属包, int 槽位索引 ) : UIElement {
+public partial class 类型_包槽位_物品( 接口_物品包 所属包, int 槽位索引 ) : UIElement {
     public int 索引 => 槽位索引;
     public Item 所属物品 => 所属包.物品矩阵[ 槽位索引 ];
-    public 类型_玩家_物品包 玩家 => 所属包.玩家;
 
     protected virtual void LeftClick_交换物品() {
         (所属包.物品矩阵[ 槽位索引 ], Main.mouseItem) = (Main.mouseItem, 所属物品);

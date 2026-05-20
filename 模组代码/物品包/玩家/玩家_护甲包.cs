@@ -12,7 +12,7 @@ namespace 物品包.玩家;
 
 
 // 特征成员
-public partial class 类型_玩家_护甲包 : 类型_玩家_同步缓存包<类型_护甲包, 结构_同步数据_护甲包> {
+public partial class 类型_玩家_护甲包 : 类型_玩家_同步缓存包<接口_护甲包, 结构_同步数据_护甲包> {
     private readonly List<string> 注册备份列表 = [];
 
     public void 注册护甲() {
