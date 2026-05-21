@@ -18,7 +18,7 @@ public partial interface 接口_物品包 {
     Guid ID { get; set; }
     Item[] 物品矩阵 { get; set; }
 
-    void 更新容量();
+    bool 更新容量();
 }
 
 // 简单虚成员
@@ -40,12 +40,16 @@ public partial class 类型_物品包 : ModItem, 接口_物品包 {
     public Item[] 物品矩阵 { get; set; }
     public 类型_配置_物品包 独立配置 { get; set; }
 
-    public virtual void 更新容量() {
+    public virtual bool 更新容量() {
         int 先前容量 = 物品矩阵.Length;
         int 配置容量 = 接口.配置.容量;
+        if ( 先前容量 == 配置容量 ) return false;
+
         for ( int i = 配置容量; i < 先前容量; i++ ) 弹出物品( 物品矩阵[ i ] );
         容量更改( 配置容量 );
         for ( int i = 先前容量; i < 配置容量; i++ ) 物品矩阵[ i ] = new();
+
+        return true;
     }
 }
 
@@ -87,6 +91,6 @@ public partial class 类型_物品包 {
 
 // 辅助函数
 public partial class 类型_物品包 {
-    private void 容量更改( int 更新容量 ) { var 物品矩阵 = this.物品矩阵; Array.Resize( ref 物品矩阵, 更新容量 ); this.物品矩阵 = 物品矩阵; }
-    private static void 弹出物品( Item 物品 ) { if ( !物品.IsAir ) Main.LocalPlayer.QuickSpawnItem( new EntitySource_Misc( "物品包弹出物品" ), 物品, 物品.stack ); }
+    protected void 容量更改( int 更新容量 ) { var 物品矩阵 = this.物品矩阵; Array.Resize( ref 物品矩阵, 更新容量 ); this.物品矩阵 = 物品矩阵; }
+    protected static void 弹出物品( Item 物品 ) { if ( !物品.IsAir ) Main.LocalPlayer.QuickSpawnItem( new EntitySource_Misc( "物品包弹出物品" ), 物品, 物品.stack ); }
 }
