@@ -13,7 +13,10 @@ public partial class 类型_窗口_物品包配置 : 类型_窗口_通用 {
     protected override float 窗口高度 => 500f;
 
     public 接口_物品包 包;
-    private readonly 类型_配置_物品包 配置草稿;
+    private 类型_配置_物品包 配置草稿;
+
+    private UIText 状态标语;
+    private UIList 条目列表;
 
     public 类型_窗口_物品包配置( 接口_物品包 包 ) {
         this.包 = 包;
@@ -22,9 +25,13 @@ public partial class 类型_窗口_物品包配置 : 类型_窗口_通用 {
     }
 
     private void 更新配置( 类型_配置_物品包 新配置 ) {
+        状态标语.SetText( Language.GetTextValue( 新配置 == null ? "Mods.物品包.UI.使用全局配置" : "Mods.物品包.UI.使用独立配置" ) );
+        if ( 新配置 == null ) { 配置草稿 = 包.默认配置.Clone() as 类型_配置_物品包; 条目列表.Clear(); 配置草稿.填充控件( 条目列表 ); }
+
         包.更新配置( 新配置 );
+        类型_系统_界面交互.界面管理器.关闭窗口( 包.ID );
         类型_系统_界面交互.界面管理器.切换窗口( 包 );
-        类型_系统_界面交互.界面管理器.切换窗口( 包 );
+        Parent.Append( this );
     }
 
     protected override void 界面初始化() {
@@ -36,12 +43,11 @@ public partial class 类型_窗口_物品包配置 : 类型_窗口_通用 {
         标题.Top.Set( 10f, 0f );
         Append( 标题 );
 
-        string 状态文本 = Language.GetTextValue( 包.独立配置 == null ? "Mods.物品包.UI.使用全局配置" : "Mods.物品包.UI.使用独立配置" );
-        UIText 状态标语 = new( 状态文本 ) { HAlign = 0.5f };
+        状态标语 = new( Language.GetTextValue( 包.独立配置 == null ? "Mods.物品包.UI.使用全局配置" : "Mods.物品包.UI.使用独立配置" ) ) { HAlign = 0.5f };
         状态标语.Top.Set( 35f, 0f );
         Append( 状态标语 );
 
-        UIList 条目列表 = new() { ListPadding = 5f };
+        条目列表 = new() { ListPadding = 5f };
         条目列表.Top.Set( 60f, 0f ); 条目列表.Left.Set( 15f, 0f ); 条目列表.Width.Set( -50f, 1f ); 条目列表.Height.Set( -120f, 1f );
         配置草稿.填充控件( 条目列表 );
         Append( 条目列表 );
