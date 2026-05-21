@@ -1,5 +1,4 @@
 using MultipleArmorSetsFramework;
-using System;
 using System.ComponentModel;
 using System.IO;
 using Terraria.GameContent.UI.Elements;
