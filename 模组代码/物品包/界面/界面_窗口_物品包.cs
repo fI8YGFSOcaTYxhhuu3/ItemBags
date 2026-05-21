@@ -1,4 +1,5 @@
 using Terraria.GameContent.UI.Elements;
+using Terraria.Localization;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using 物品包.Items;
@@ -18,7 +19,7 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
     protected float 网格宽度 => 槽位大小 * 包.配置.列数 + 槽位间距 * ( 包.配置.列数 - 1 );
     protected float 网格高度 => 槽位大小 * 包.配置.行数 + 槽位间距 * ( 包.配置.行数 - 1 );
 
-    private readonly UITextPanel<string> 配置按钮 = new( "配置" );
+    private readonly UITextPanel<string> 配置按钮 = new( Language.GetTextValue( "Mods.物品包.UI.按钮.配置" ) );
     private readonly UIElement 工具栏 = new();
     private readonly UIGrid 物品网格 = [];
     private readonly UIScrollbar 滚动条 = new();

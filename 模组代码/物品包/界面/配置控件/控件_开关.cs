@@ -3,6 +3,7 @@ using System;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.UI;
 
 namespace 物品包.界面.配置控件;
@@ -28,7 +29,7 @@ public class 类型_控件_开关 : UITextPanel<string> {
 
     public override void Update( GameTime gameTime ) {
         base.Update( gameTime );
-        SetText( 当前状态 ? "ON" : "OFF" );
+        SetText( Language.GetTextValue( 当前状态 ? "Mods.物品包.UI.按钮.开" : "Mods.物品包.UI.按钮.关" ) );
         BackgroundColor = 当前状态 ? new( 73, 180, 73 ) : new( 180, 73, 73 );
     }
 }
