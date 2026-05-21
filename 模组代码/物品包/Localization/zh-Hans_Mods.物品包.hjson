@@ -8,6 +8,17 @@ Items: {
 			'''
 	}
 
+	类型_嵌套包: {
+		DisplayName: 嵌套包
+		Tooltip:
+			'''
+			<right>打开存储界面。
+			中键点击切换加成开关。
+			用于存放其它物品包。
+			会递归计算内部所有物品包提供的加成。
+			'''
+	}
+
 	类型_饰品包: {
 		DisplayName: 饰品包
 		Tooltip:
@@ -26,17 +37,6 @@ Items: {
 			中键点击切换加成开关。
 			其中的护甲将提供属性加成并激活套装效果。
 			每三格视为一套头盔、胸甲、护腿。
-			'''
-	}
-
-	类型_嵌套包: {
-		DisplayName: 嵌套包
-		Tooltip:
-			'''
-			<right>打开存储界面。
-			中键点击切换加成开关。
-			用于存放其它物品包。
-			会递归计算内部所有物品包提供的加成。
 			'''
 	}
 }
@@ -59,7 +59,7 @@ UI: {
 
 Configs: {
 	类型_配置_物品包: {
-		DisplayName: 物品包配置
+		DisplayName: 物品包全局配置
 		Headers.容量设置: 基础配置
 
 		容量: {
@@ -83,7 +83,7 @@ Configs: {
 	}
 
 	类型_配置_嵌套包: {
-		DisplayName: 嵌套包配置
+		DisplayName: 嵌套包全局配置
 		Headers.容量设置: 基础配置
 
 		容量: {
@@ -107,7 +107,7 @@ Configs: {
 	}
 
 	类型_配置_饰品包: {
-		DisplayName: 饰品包配置
+		DisplayName: 饰品包全局配置
 		Headers.功能设置: 功能配置
 
 		允许饰品重复: {
@@ -127,7 +127,7 @@ Configs: {
 	}
 
 	类型_配置_护甲包: {
-		DisplayName: 护甲包配置
+		DisplayName: 护甲包全局配置
 
 		Headers: {
 			容量设置: 容量配置

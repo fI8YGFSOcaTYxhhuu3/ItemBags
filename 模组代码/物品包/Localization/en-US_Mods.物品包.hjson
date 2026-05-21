@@ -9,6 +9,17 @@ Items: {
 			'''
 	}
 
+	类型_嵌套包: {
+		DisplayName: Nested Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			Middle click to toggle bag bonuses.
+			Used to store other Item Bags.
+			Recursively calculates all bonuses provided by the bags within.
+			'''
+	}
+
 	类型_饰品包: {
 		DisplayName: Accessory Bag
 		Tooltip:
@@ -27,17 +38,6 @@ Items: {
 			Middle click to toggle bag bonuses.
 			Armor inside will provide stat bonuses and activate set bonuses.
 			Every three slots are treated as a set (Helmet, Shirt, Pants).
-			'''
-	}
-
-	类型_嵌套包: {
-		DisplayName: Nested Bag
-		Tooltip:
-			'''
-			<right> to open storage interface.
-			Middle click to toggle bag bonuses.
-			Used to store other Item Bags.
-			Recursively calculates all bonuses provided by the bags within.
 			'''
 	}
 }
@@ -60,7 +60,7 @@ UI: {
 
 Configs: {
 	类型_配置_物品包: {
-		DisplayName: Item Bag Config
+		DisplayName: Item Bag Global Config
 		Headers.容量设置: Basic Configuration
 
 		容量: {
@@ -84,7 +84,7 @@ Configs: {
 	}
 
 	类型_配置_嵌套包: {
-		DisplayName: Nested Bag Config
+		DisplayName: Nested Bag Global Config
 		Headers.容量设置: Basic Configuration
 
 		容量: {
@@ -108,7 +108,7 @@ Configs: {
 	}
 
 	类型_配置_饰品包: {
-		DisplayName: Accessory Bag Config
+		DisplayName: Accessory Bag Global Config
 		Headers.功能设置: Feature Configuration
 
 		允许饰品重复: {
@@ -128,7 +128,7 @@ Configs: {
 	}
 
 	类型_配置_护甲包: {
-		DisplayName: Armor Bag Config
+		DisplayName: Armor Bag Global Config
 
 		Headers: {
 			容量设置: Basic Configuration
