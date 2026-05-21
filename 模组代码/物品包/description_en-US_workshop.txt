@@ -8,9 +8,10 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 
 0. General Notes
 	- Right-click to open the storage interface.
-	- Middle-click to toggle the bag's attribute bonuses on/off.
+	- Middle-click to toggle the bag's bonuses on/off.
 	- Crafted at a Work Bench using Silk and Iron Bars.
 	- Supports customizing capacity and UI display size for all bag types.
+	- Supports independent configuration for each individual bag.
 1. Item Bag
 	- A basic storage container.
 	- Items inside do not provide any stat bonuses; it is solely used for organizing and sorting items.
@@ -28,6 +29,9 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 
 [h3]Planned Features[/h3]
 
+- Remember UI window positions...
+- Shift-click quick extraction...
+- Add a feature to armor bags that excludes the base defense stats of individual armor pieces...
 - Potion bags, Banner bags, Crafting Station bags, etc...
 - Dynamic difficulty based on number of equipped accessories and armors...
 
