@@ -19,6 +19,8 @@ public partial interface 接口_物品包 {
     Item[] 物品矩阵 { get; set; }
 
     bool 更新容量();
+    void 更新配置( 类型_配置_物品包 新配置 ) => 更新配置_物品包( 新配置 );
+    protected void 更新配置_物品包( 类型_配置_物品包 新配置 ) { 独立配置 = 新配置; 更新容量(); }
 }
 
 // 简单虚成员
