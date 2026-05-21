@@ -10,15 +10,16 @@ namespace 物品包.界面;
 public abstract class 类型_窗口_通用 : UIPanel {
     protected abstract float 窗口宽度 { get;}
     protected abstract float 窗口高度 { get; }
+    private float 水平位置 => float.Min( float.Max( ( Main.screenWidth - 窗口宽度 ) / 2f, 10f ), Main.screenWidth - 10f );
+    private float 垂直位置 => float.Min( float.Max( ( Main.screenHeight - 窗口高度 ) / 2f, 10f ), Main.screenHeight - 10f );
 
-    protected Vector2 默认位置 => new( ( Main.screenWidth - 窗口宽度 ) / 2f, ( Main.screenHeight - 窗口高度 ) / 2f );
+    protected Vector2 默认位置 => new( 水平位置, 垂直位置 );
     protected Vector2? 位置;
     protected Vector2? 拖拽偏移;
     protected bool 脏标记_界面布局 = true;
 
-    protected virtual void 初始化() {
-        Width.Set( 窗口宽度, 0f ); Height.Set( 窗口高度, 0f );
-        Left.Set( ( Main.screenWidth - 窗口宽度 ) / 2f, 0f ); Top.Set( ( Main.screenHeight - 窗口高度 ) / 2f, 0f );
+    protected virtual void 界面初始化() {
+        Width.Set( 窗口宽度, 0f ); Height.Set( 窗口高度, 0f ); Left.Set( 水平位置, 0f ); Top.Set( 垂直位置, 0f );
         BackgroundColor = new Color( 73, 94, 171 ) * 0.7f;
     }
 

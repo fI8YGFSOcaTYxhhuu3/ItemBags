@@ -7,6 +7,7 @@ namespace 物品包.界面;
 
 
 
+// 特征成员
 public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
     private const float 槽位大小 = 38f;
     private const float 槽位间距 = 4f;
@@ -16,8 +17,6 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
 
     protected float 网格宽度 => 槽位大小 * 包.配置.列数 + 槽位间距 * ( 包.配置.列数 - 1 );
     protected float 网格高度 => 槽位大小 * 包.配置.行数 + 槽位间距 * ( 包.配置.行数 - 1 );
-    protected override float 窗口宽度 => 边缘间距 + 网格宽度 + 槽位间距 + 滚动条宽度 + 边缘间距;
-    protected override float 窗口高度 => 边缘间距 + 网格高度 + 槽位间距 + 工具栏高度 + 边缘间距;
 
     private readonly UITextPanel<string> 配置按钮 = new( "配置" );
     private readonly UIElement 工具栏 = new();
@@ -26,19 +25,23 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
 
     public 接口_物品包 包;
 
-    public 类型_窗口_物品包( 接口_物品包 包 ) {
-        包.更新容量(); this.包 = 包;
-        SetPadding( 0f );
-        初始化();
+    public 类型_窗口_物品包( 接口_物品包 包 ) { 包.更新容量(); this.包 = 包; 界面初始化(); }
+}
 
-        工具栏_初始化(); 物品网格_初始化();
+// 特征重写函数
+public partial class 类型_窗口_物品包 {
+    protected override float 窗口宽度 => 边缘间距 + 网格宽度 + 槽位间距 + 滚动条宽度 + 边缘间距;
+    protected override float 窗口高度 => 边缘间距 + 网格高度 + 槽位间距 + 工具栏高度 + 边缘间距;
+
+    protected override void 界面初始化() {
+        base.界面初始化();
+        工具栏_初始化();
+        物品网格_初始化();
     }
-
     protected override void Update_布局属性() {
         base.Update_布局属性();
         工具栏_更新(); 物品网格_更新();
     }
-
     protected override bool 拖拽判断( UIMouseEvent 鼠标事件 ) => 鼠标事件.Target == this || 鼠标事件.Target == 工具栏;
 }
 

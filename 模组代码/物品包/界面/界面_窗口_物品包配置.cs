@@ -14,7 +14,7 @@ public class 类型_窗口_物品包配置 : 类型_窗口_通用 {
 
     public 类型_窗口_物品包配置( 接口_物品包 包 ) {
         this.包 = 包;
-        初始化();
+        界面初始化();
 
         UIText 标题 = new( $"配置: {((ModItem)包).Item.Name}" ) { HAlign = 0.5f };
         标题.Top.Set( 5f, 0f );
