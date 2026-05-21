@@ -35,6 +35,7 @@ public partial class 类型_窗口_物品包 {
 
     protected override void 界面初始化() {
         base.界面初始化();
+        SetPadding( 0 );
         工具栏_初始化();
         物品网格_初始化();
     }
