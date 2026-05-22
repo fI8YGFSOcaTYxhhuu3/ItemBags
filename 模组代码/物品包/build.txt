@@ -1,5 +1,5 @@
 displayName = Item Bags
 author = 匿名
-version = 1.4
+version = 1.4.1
 includeSource = true
 modReferences = MultipleArmorSetsFramework
