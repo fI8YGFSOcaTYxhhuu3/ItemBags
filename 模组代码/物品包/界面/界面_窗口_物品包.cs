@@ -20,6 +20,7 @@ public partial class 类型_窗口_物品包 : 类型_窗口_通用 {
     protected float 网格高度 => 槽位大小 * 包.配置.行数 + 槽位间距 * ( 包.配置.行数 - 1 );
 
     private readonly UITextPanel<string> 配置按钮 = new( Language.GetTextValue( "Mods.物品包.UI.按钮.配置" ) );
+    private readonly UITextPanel<string> 关闭按钮 = new( Language.GetTextValue( "Mods.物品包.UI.按钮.关闭" ) );
     private readonly UIElement 工具栏 = new();
     private readonly UIGrid 物品网格 = [];
     private readonly UIScrollbar 滚动条 = new();
@@ -55,9 +56,17 @@ public partial class 类型_窗口_物品包 {
         配置按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面交互.界面管理器.切换配置窗口( 包 );
         工具栏.Append( 配置按钮 );
     }
+    private void 关闭按钮_初始化() {
+        关闭按钮.VAlign = 0.5f; 关闭按钮.HAlign = 1f;
+        关闭按钮.Width.Set( 60f, 0f ); 关闭按钮.Height.Set( 28f, 0f );
+        关闭按钮.BackgroundColor = new( 180, 73, 73 );
+        关闭按钮.OnLeftClick += ( evt, element ) => 类型_系统_界面交互.界面管理器.切换窗口( 包 );
+        工具栏.Append( 关闭按钮 );
+    }
     private void 工具栏_初始化() {
         工具栏.Top.Set( 边缘间距, 0f ); 工具栏.Left.Set( 边缘间距, 0f ); 工具栏.Height.Set( 工具栏高度, 0f );
         配置按钮_初始化();
+        关闭按钮_初始化();
         Append( 工具栏 );
     }
     private void 工具栏_更新() { 工具栏.Width.Set( 窗口宽度 - 边缘间距 * 2, 0f ); }

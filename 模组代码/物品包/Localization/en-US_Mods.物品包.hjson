@@ -55,6 +55,7 @@ UI: {
 		取消: Cancel
 		开: ON
 		关: OFF
+		关闭: Close
 	}
 }
 
