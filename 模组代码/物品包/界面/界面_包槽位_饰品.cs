@@ -1,3 +1,4 @@
+using Terraria;
 using 物品包.Items;
 
 namespace 物品包.界面;
@@ -5,8 +6,5 @@ namespace 物品包.界面;
 
 
 public class 类型_包槽位_饰品( 接口_饰品包 所属包, int 槽位索引 ) : 类型_包槽位_缓存( 所属包, 槽位索引 ) {
-    protected override void LeftClick_交换物品() {
-        base.LeftClick_交换物品();
-        所属包.类型玩家.脏标记_同步缓存 = true;
-    }
+    protected override void 物品存取处理( Item 先前物品, Item 当前物品 ) { base.物品存取处理( 先前物品, 当前物品 ); 所属包.类型玩家.脏标记_同步缓存 = true; }
 }
