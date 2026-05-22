@@ -37,8 +37,6 @@ public partial class 类型_窗口_物品包配置 : 类型_窗口_通用 {
     protected override void 界面初始化() {
         base.界面初始化();
 
-        SetPadding( 0 );
-
         UIText 标题 = new( ( 包 as ModItem ).Item.Name ) { HAlign = 0.5f };
         标题.Top.Set( 10f, 0f );
         Append( 标题 );

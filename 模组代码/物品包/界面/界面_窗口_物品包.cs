@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.ModLoader.UI.Elements;
@@ -36,15 +38,21 @@ public partial class 类型_窗口_物品包 {
     protected override float 窗口高度 => 边缘间距 + 网格高度 + 槽位间距 + 工具栏高度 + 边缘间距;
 
     protected override void 界面初始化() {
+        
         base.界面初始化();
-        SetPadding( 0 );
         工具栏_初始化();
         物品网格_初始化();
+    }
+    protected override void Update_鼠标拖拽() {
+        bool 初始拖拽状态 = 拖拽偏移.HasValue;
+        base.Update_鼠标拖拽();
+        if ( 初始拖拽状态 && !拖拽偏移.HasValue ) 包.界面位置 = 位置;
     }
     protected override void Update_布局属性() {
         base.Update_布局属性();
         工具栏_更新(); 物品网格_更新();
     }
+    protected override void Update_位置初始化() { if ( 包.界面位置.HasValue ) 位置 = 限制范围( 包.界面位置.Value ); 位置 ??= 默认位置; }
     protected override bool 拖拽判断( UIMouseEvent 鼠标事件 ) => 鼠标事件.Target == this || 鼠标事件.Target == 工具栏;
 }
 

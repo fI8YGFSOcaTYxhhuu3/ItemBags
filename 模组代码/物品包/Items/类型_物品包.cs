@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using System;
 using System.IO;
 using Terraria;
@@ -17,6 +18,7 @@ namespace 物品包.Items;
 public partial interface 接口_物品包 {
     Guid ID { get; set; }
     Item[] 物品矩阵 { get; set; }
+    Vector2? 界面位置 { get; set; }
 
     bool 更新容量();
     void 更新配置( 类型_配置_物品包 新配置 ) => 更新配置_物品包( 新配置 );
@@ -41,6 +43,7 @@ public partial class 类型_物品包 : ModItem, 接口_物品包 {
     public Guid ID { get; set; } = Guid.NewGuid();
     public Item[] 物品矩阵 { get; set; }
     public 类型_配置_物品包 独立配置 { get; set; }
+    public Vector2? 界面位置 { get; set; }
 
     public virtual bool 更新容量() {
         int 先前容量 = 物品矩阵.Length;
@@ -61,12 +64,18 @@ public partial class 类型_物品包 {
         var 副本 = base.Clone( 初始副本 ) as 类型_物品包;
         副本.物品矩阵 = new Item[ 物品矩阵.Length ]; for ( int i = 0; i < 物品矩阵.Length; i++ ) 副本.物品矩阵[ i ] = 物品矩阵[ i ].Clone();
         if ( 独立配置 != null ) 副本.独立配置 = 独立配置.Clone() as 类型_配置_物品包;
+        副本.界面位置 = 界面位置;
         return 副本;
     }
-    public override void SaveData( TagCompound 存档标签 ) { 存档标签[ "物品矩阵" ] = 物品矩阵; if ( 独立配置 != null ) 存档标签[ "独立配置" ] = 独立配置.存档写入(); }
+    public override void SaveData( TagCompound 存档标签 ) {
+        存档标签[ "物品矩阵" ] = 物品矩阵;
+        if ( 独立配置 != null ) 存档标签[ "独立配置" ] = 独立配置.存档写入();
+        if ( 界面位置.HasValue ) 存档标签[ "界面位置" ] = 界面位置.Value;
+    }
     public override void LoadData( TagCompound 存档标签 ) {
         物品矩阵 = 存档标签.Get<Item[]>( "物品矩阵" );
         if ( 存档标签.TryGet( "独立配置", out TagCompound 配置标签 ) ) { 独立配置 = 接口.配置.Clone() as 类型_配置_物品包; 独立配置.存档读取( 配置标签 ); }
+        if ( 存档标签.TryGet( "界面位置", out Vector2 存档位置 ) ) 界面位置 = 存档位置;
     }
     public override void NetSend( BinaryWriter 网络流 ) {
         网络流.Write( 物品矩阵.Length ); for ( int i = 0; i < 物品矩阵.Length; i++ ) ItemIO.Send( 物品矩阵[ i ], 网络流, true, true );
