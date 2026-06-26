@@ -22,7 +22,7 @@ public class 类型_物品包模组 : Mod {
         if ( 所属玩家ID < 0 || 所属玩家ID >= Main.maxPlayers || !Main.player[ 所属玩家ID ].active ) return;
 
         var 玩家 = Main.player[ 所属玩家ID ];
-        类型_玩家_物品包 所属玩家 = 对象类型 switch {
+        接口_玩家_网络同步 所属玩家 = 对象类型 switch {
             枚举_同步对象类型.饰品包 => 玩家.GetModPlayer<类型_玩家_饰品包>(),
             枚举_同步对象类型.护甲包 => 玩家.GetModPlayer<类型_玩家_护甲包>(),
             _ => null,

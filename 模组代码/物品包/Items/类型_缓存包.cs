@@ -26,7 +26,7 @@ public partial interface 接口_缓存包 {
     protected void 切换启用状态_缓存包_可切换() {
         启用状态 = !启用状态;
         脏标记 = true;
-        if ( 玩家 is 类型_玩家_缓存包 缓存玩家 ) 缓存玩家.脏标记_缓存包 = true;
+        if ( 玩家 is 接口_玩家_缓存包 缓存玩家 ) 缓存玩家.脏标记_缓存包 = true;
         Terraria.Audio.SoundEngine.PlaySound( Terraria.ID.SoundID.MenuTick );
     }
 }
