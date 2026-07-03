@@ -20,7 +20,7 @@ public partial interface 接口_物品包 {
     Item[] 物品矩阵 { get; set; }
     Vector2? 界面位置 { get; set; }
 
-    bool 更新容量();
+    int 更新容量();
     void 更新配置( 类型_配置_物品包 新配置 ) => 更新配置_物品包( 新配置 );
     protected void 更新配置_物品包( 类型_配置_物品包 新配置 ) { 独立配置 = 新配置; 更新容量(); }
 }
@@ -39,23 +39,23 @@ public partial interface 接口_物品包 {
 
 // 特征成员
 public partial class 类型_物品包 : ModItem, 接口_物品包 {
-    public virtual 接口_物品包 接口 => this;
     public Guid ID { get; set; } = Guid.NewGuid();
     public Item[] 物品矩阵 { get; set; }
     public 类型_配置_物品包 独立配置 { get; set; }
     public Vector2? 界面位置 { get; set; }
 
-    public virtual bool 更新容量() {
-        int 先前容量 = 物品矩阵.Length;
-        int 配置容量 = 接口.配置.容量;
-        if ( 先前容量 == 配置容量 ) return false;
-
+    public virtual int 更新容量() {
+        int 先前容量 = 物品矩阵.Length; int 配置容量 = 接口.配置.容量;
         for ( int i = 配置容量; i < 先前容量; i++ ) 弹出物品( 物品矩阵[ i ] );
         容量更改( 配置容量 );
         for ( int i = 先前容量; i < 配置容量; i++ ) 物品矩阵[ i ] = new();
-
-        return true;
+        return 配置容量 - 先前容量;
     }
+}
+
+// 简单重写成员
+public partial class 类型_物品包 : ModItem, 接口_物品包 {
+    public 接口_物品包 接口 => this;
 }
 
 // TML 重写成员

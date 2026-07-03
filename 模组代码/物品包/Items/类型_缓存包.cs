@@ -56,10 +56,10 @@ public abstract partial class 类型_缓存包<类型_缓存数据> : 类型_物
 
 // 特征重写成员
 public abstract partial class 类型_缓存包<类型_缓存数据> {
-    public override bool 更新容量() {
-        if ( !base.更新容量() ) return false;
-        脏标记 = true;
-        return true;
+    public override int 更新容量() {
+        int 容量增量 = base.更新容量();
+        脏标记 = 容量增量 != 0;
+        return 容量增量;
     }
     public override ModItem Clone( Item 初始副本 ) {
         var 副本 = base.Clone( 初始副本 ) as 类型_缓存包<类型_缓存数据>;
