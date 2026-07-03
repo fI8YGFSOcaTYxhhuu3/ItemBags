@@ -40,11 +40,22 @@ Items: {
 			Every three slots are treated as a set (Helmet, Shirt, Pants).
 			'''
 	}
+
+	类型_拾取包: {
+		DisplayName: Autoloot Bag
+		Tooltip:
+			'''
+			<right> to open storage interface.
+			Middle click to toggle autoloot.
+			'''
+	}
 }
 
 UI: {
 	缓存包启用: "[c/00FF00:Bag Bonus: Enabled]"
 	缓存包禁用: "[c/FF0000:Bag Bonus: Disabled]"
+	拾取包启用: "[c/00FF00:Autoloot: Enabled]"
+	拾取包禁用: "[c/FF0000:Autoloot: Disabled]"
 	使用独立配置: "[c/00FF00:Using Individual Config]"
 	使用全局配置: "[c/888888:Using Global Config]"
 
@@ -174,6 +185,20 @@ Configs: {
 				Disabled: No bonuses are applied.
 				Enabled: Bonuses are applied and can stack repeatedly.
 				Unique: The same armor set only applies its bonus once.
+				'''
+		}
+	}
+
+	类型_配置_拾取包: {
+		DisplayName: Autoloot Bag Global Config
+		Headers.容量设置: Basic Configuration
+
+		容量: {
+			Label: Storage Capacity
+			Tooltip:
+				'''
+				Set the total number of slots for this type of bag.
+				Note: Reducing capacity will cause items in excess slots to drop.
 				'''
 		}
 	}
