@@ -54,7 +54,7 @@ public abstract partial class 类型_缓存包<类型_缓存数据> {
 public abstract partial class 类型_缓存包<类型_缓存数据> {
     public override int 更新容量() {
         int 容量增量 = base.更新容量();
-        if ( 容量增量 != 0 ) 接口.重构缓存();
+        if ( 容量增量 < 0 ) 接口.重构缓存();
         return 容量增量;
     }
     public override ModItem Clone( Item 初始副本 ) {
