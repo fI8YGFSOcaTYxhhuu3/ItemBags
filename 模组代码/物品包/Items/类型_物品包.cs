@@ -91,7 +91,7 @@ public partial class 类型_物品包 {
 // TML 成员
 public partial class 类型_物品包 {
     public override bool ConsumeItem( Player 玩家 ) => false;
-    public override void AddRecipes() { CreateRecipe( 1 ).AddIngredient( ItemID.Silk, 10 ).AddIngredient( ItemID.IronBar, 10 ).AddTile( TileID.WorkBenches ).Register(); }
+    public override void AddRecipes() { CreateRecipe( 1 ).AddIngredient( ItemID.Silk, 10 ).AddTile( TileID.WorkBenches ).Register(); }
     public override void SetDefaults() {
         Item.width = 32;
         Item.height = 32;
