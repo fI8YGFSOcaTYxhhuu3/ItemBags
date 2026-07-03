@@ -32,7 +32,6 @@ public partial interface 接口_拾取包 {
                 int 可填充量 = Math.Min( 槽位物品.maxStack - 槽位物品.stack, 剩余数量 );
                 槽位物品.stack += 可填充量;
                 剩余数量 -= 可填充量;
-                脏标记 = true;
                 if ( 剩余数量 <= 0 ) return 0;
             }
         }
@@ -42,7 +41,6 @@ public partial interface 接口_拾取包 {
             if ( 槽位物品.IsAir ) {
                 槽位物品 = 物品.Clone();
                 槽位物品.stack = 剩余数量;
-                脏标记 = true;
                 return 0;
             }
         }

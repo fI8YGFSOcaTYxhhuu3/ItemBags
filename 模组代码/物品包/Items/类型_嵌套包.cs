@@ -38,7 +38,7 @@ public partial interface 接口_嵌套包 {
     private bool 存在自我嵌套( 接口_物品包 目标包 ) {
         if ( 目标包 is not 接口_嵌套包 目标嵌套包 ) return false;
         if ( 目标嵌套包.ID == ID ) return true;
-        目标嵌套包.更新缓存(); foreach ( var 子嵌套包 in 目标嵌套包.缓存数据[ ( byte ) 枚举_物品包类型.嵌套包 ] ) if ( 存在自我嵌套( 子嵌套包 ) ) return true;
+        foreach ( var 子嵌套包 in 目标嵌套包.缓存数据[ ( byte ) 枚举_物品包类型.嵌套包 ] ) if ( 存在自我嵌套( 子嵌套包 ) ) return true;
         return false;
     }
     private void 玩家缓存标记() {

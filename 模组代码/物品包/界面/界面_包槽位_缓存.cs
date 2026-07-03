@@ -6,5 +6,5 @@ namespace 物品包.界面;
 
 
 public class 类型_包槽位_缓存( 接口_缓存包 所属包, int 槽位索引 ) : 类型_包槽位_物品( 所属包, 槽位索引 ) {
-    protected override void 物品存取处理( Item 先前物品, Item 当前物品 ) { base.物品存取处理( 先前物品, 当前物品 ); 所属包.脏标记 = true; }
+    protected override void 物品存取处理( Item 先前物品, Item 当前物品 ) { base.物品存取处理( 先前物品, 当前物品 ); 所属包.重构缓存(); }
 }
