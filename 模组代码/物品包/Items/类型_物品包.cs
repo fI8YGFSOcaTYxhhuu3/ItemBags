@@ -67,6 +67,7 @@ public partial class 类型_物品包 {
         副本.界面位置 = 界面位置;
         return 副本;
     }
+    public override void OnCreated( ItemCreationContext context ) { base.OnCreated( context ); ID = Guid.NewGuid(); }
     public override void SaveData( TagCompound 存档标签 ) {
         存档标签[ "物品矩阵" ] = 物品矩阵;
         if ( 独立配置 != null ) 存档标签[ "独立配置" ] = 独立配置.存档写入();
