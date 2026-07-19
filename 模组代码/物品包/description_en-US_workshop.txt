@@ -9,7 +9,7 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 0. General Notes
 	- Right-click to open the storage interface.
 	- Middle-click to toggle the bag's bonuses on/off.
-	- Crafted at a Work Bench using Silk and Iron Bars.
+	- Crafted at a Work Bench using Silk.
 	- Supports customizing capacity and UI display size for all bag types.
 	- Supports independent configuration for each individual bag.
 1. Item Bag
@@ -29,6 +29,7 @@ Using highly optimized algorithms pushed near their limits, this mod introduces 
 
 [h3]Planned Features[/h3]
 
+- Autoloot Bag, which supports 10000 capcity, black\white list, auto trash list, independent config, etc...
 - Add a feature to armor bags that excludes the base defense stats of individual armor pieces...
 - Potion bags, Banner bags, Crafting Station bags, etc...
 - Dynamic difficulty based on number of equipped accessories and armors...
