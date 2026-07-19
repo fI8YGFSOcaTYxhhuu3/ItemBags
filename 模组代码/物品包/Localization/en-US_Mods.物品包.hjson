@@ -47,6 +47,7 @@ Items: {
 			'''
 			<right> to open storage interface.
 			Middle click to toggle autoloot.
+			[c/FF0000:Warning! Autoloot bag is not completed, and currently not available.]
 			'''
 	}
 }
